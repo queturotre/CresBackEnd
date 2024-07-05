@@ -9,18 +9,12 @@ const connection = mysql.createConnection({
   password: process.env.PASSWORD
 });
 
-const getConnection = async () => connection;
+connection.connect((err) => {
+  if (err) {
+    console.error('Error conectando a la base de datos:', err);
+    return;
+  }
+  console.log('Conectado al servidor MySQL.');
+});
 
-module.exports = {
-    getConnection
-}
-
-// connection.connect((err) => {
-//   if (err) {
-//     console.error('Error conectando a la base de datos:', err);
-//     return;
-//   }
-//   console.log('Conectado al servidor MySQL.');
-// });
-
-// module.exports = connection;
+module.exports = connection;
