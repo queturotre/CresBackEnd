@@ -77,7 +77,7 @@ router.put('/:id', (req, res) => {
 // Eliminar estudiante por id
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  db.query('DELETE FROM estudiantes WHERE id = ?', [id], (err, results) => { // Por qué la variable id va en un arreglo?
+  db.query('DELETE FROM estudiantes WHERE id = ?', [id], (err, results) => {
     if (err){
       console.error(err);
       res.status(500).json({ message: 'Error eliminando estudiante'});
