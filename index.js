@@ -5,11 +5,11 @@ const cors = require('cors');
 const routerApi = require('./routing/index.router');
 
 const app = express();
-app.use(cors());
 const port = 3000;
 
-app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, ()=>{
   console.log("Puerto "+port);

@@ -36,9 +36,9 @@ router.post('/', (req, res) => {
   db.query('INSERT INTO cursos (nrc, grado, curso) VALUES (?, ?, ?)', [nrc, grado, curso], (err) => {
     if (err) {
       console.error(err);
-      res.status(500).send('Error añadiendo curso');
+      res.status(500).json({ message: 'Error añadiendo curso'});
     } else {
-      res.status(201).send('Curso añadido exitosamente');
+      res.status(201).json({ message: 'Curso añadido exitosamente'});
     }
   });
 });
@@ -49,16 +49,16 @@ router.delete('/:nrc', (req, res) => {
   db.query('DELETE FROM estudiantes WHERE nrc = ?', [nrc], (err) => {
     if (err) {
       console.error(err);
-      res.status(500).send('Error eliminando estudiantes');
+      res.status(500).json({ message: 'Error eliminando estudiantes'});
     } else {
       db.query('DELETE FROM cursos WHERE nrc = ?', [nrc], (err, results) => {
         if (err) {
           console.error(err);
-          res.status(500).send('Error eliminando curso');
+          res.status(500).json({ message: 'Error eliminando curso'});
         } else if (results.affectedRows === 0) {
-          res.status(404).send('Curso no encontrado');
+          res.status(404).json({ message: 'Curso no encontrado'});
         } else {
-          res.status(200).send('Curso eliminando exitosamente');
+          res.status(200).json({ message: 'Curso eliminando exitosamente'});
         }
       });
     }
