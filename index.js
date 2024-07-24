@@ -15,6 +15,6 @@ app.listen(port, ()=>{
   console.log("Puerto "+port);
 });
 
-app.use(morgan("dev"))
+app.use(morgan("dev"));
 
 routerApi(app);

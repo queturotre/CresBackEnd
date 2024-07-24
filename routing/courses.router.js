@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
   db.query('INSERT INTO cursos (nrc, grado, curso) VALUES (?, ?, ?)', [nrc, grado, curso], (err) => {
     if (err) {
       console.error(err);
-      res.status(500).json({ message: 'Error añadiendo curso'});
+      res.status(500).json({ message: `Error añadiendo curso ${err}`});
     } else {
       res.status(201).json({ message: 'Curso añadido exitosamente'});
     }
